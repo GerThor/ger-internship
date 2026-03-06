@@ -10,3 +10,31 @@
 @import "./css/styles/style.css";
 @import "./css/colors/scheme-01.css";
 @import "./css/styles/coloring.css";
+
+
+/* My Imports */
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+
+.slick-prev::before,
+.slick-next::before {
+  color: gray;
+}
+
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next {
+  display: flex; 
+  justify-content: center; 
+  color: white;
+  align-items: center; 
+  background: white; 
+  height: 50px; 
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+
+.carousel__wrapper {
+  width: 10000px;
+}
