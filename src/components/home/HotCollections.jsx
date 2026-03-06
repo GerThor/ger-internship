@@ -1,69 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Slider from "react-slick";
+import ReactSlickSlider from "../UI/ReactSlickSlider";
+import Skeleton from "../UI/Skeleton";
 
 const HotCollections = () => {
   const [dataHotCollections, setDataHotCollections] = useState([]);
   const [loadingHotCollection, setLoadingHotCollection] = useState(true);
-
-  function NextArrow(props) {
-    const { className, onClick } = props;
-    return <div className={className} onClick={onClick} />;
-  }
-
-  function PrevArrow(props) {
-    const { className, onClick } = props;
-    return <div className={className} onClick={onClick} />;
-  }
-
-  var settings = {
-    dots: false,
-    infinite: true,
-    speed: 100,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-    ],
-  };
 
   async function getHotCollectionsAPI() {
     const { data } = await axios.get(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections",
     );
     setDataHotCollections(data);
+    setLoadingHotCollection(false);
   }
 
   useEffect(() => {
     getHotCollectionsAPI();
-    setLoadingHotCollection(false);
   }, []);
 
   return (
@@ -76,50 +30,62 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <Slider {...settings}>
-            {loadingHotCollection
-              ? new Array(4).fill(0).map((_, index) => (
-                  <div key={index}>
-                    <div className="nft_coll nft_coll_skeleton">
-                      <div className="nft_wrap"></div>
-                      <div className="nft_coll_pp">
-                      </div>
-                      <div className="nft_coll_info"></div>
+          {loadingHotCollection ? (
+            <ReactSlickSlider>
+              {new Array(4).fill(0).map((_, index) => (
+                <div key={index}>
+                  <div className="nft_coll">
+                    <div className="nft_wrap">
+                      <Skeleton width={"100%"} height={"200px"}/>
+                    </div>
+                    <div className="nft_coll_pp">
+                      <Skeleton width={"50px"} height={"50px"} borderRadius={"50%"}/>
+                      <i className="fa fa-check"></i>
+                    </div>
+                    <div className="nft_coll_info">
+                      <Skeleton width={"100px"} height={"20px"}/>
+                      <br></br>
+                      <Skeleton width={"60px"} height={"20px"}/>
                     </div>
                   </div>
-                ))
-              : dataHotCollections.map((collection) => (
-                  <div key={collection.id}>
-                    <div className="nft_coll">
-                      <div className="nft_wrap">
-                        <Link to={`/item-details/${collection.nftId}`}>
-                          <img
-                            src={collection.nftImage}
-                            className="lazy img-fluid"
-                            alt=""
-                          />
-                        </Link>
-                      </div>
-                      <div className="nft_coll_pp">
-                        <Link to="/author">
-                          <img
-                            className="lazy pp-coll"
-                            src={collection.authorImage}
-                            alt=""
-                          />
-                        </Link>
-                        <i className="fa fa-check"></i>
-                      </div>
-                      <div className="nft_coll_info">
-                        <Link to="/explore">
-                          <h4>{collection.title}</h4>
-                        </Link>
-                        <span>ERC-{collection.code}</span>
-                      </div>
+                </div>
+              ))}
+            </ReactSlickSlider>
+          ) : (
+            <ReactSlickSlider>
+              {dataHotCollections.map((collection) => (
+                <div key={collection.id}>
+                  <div className="nft_coll">
+                    <div className="nft_wrap">
+                      <Link to={`/item-details/${collection.nftId}`}>
+                        <img
+                          src={collection.nftImage}
+                          className="lazy img-fluid"
+                          alt=""
+                        />
+                      </Link>
+                    </div>
+                    <div className="nft_coll_pp">
+                      <Link to="/author">
+                        <img
+                          className="lazy pp-coll"
+                          src={collection.authorImage}
+                          alt=""
+                        />
+                      </Link>
+                      <i className="fa fa-check"></i>
+                    </div>
+                    <div className="nft_coll_info">
+                      <Link to="/explore">
+                        <h4>{collection.title}</h4>
+                      </Link>
+                      <span>ERC-{collection.code}</span>
                     </div>
                   </div>
-                ))}
-          </Slider>
+                </div>
+              ))}
+            </ReactSlickSlider>
+          )}
         </div>
       </div>
     </section>
