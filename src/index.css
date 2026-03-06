@@ -16,6 +16,7 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
+/* Slick Arrow CSS */
 
 .slick-prev::before,
 .slick-next::before {
@@ -33,8 +34,16 @@
   width: 50px;
   border-radius: 50%;
   border: 1px solid gray;
+  z-index: 10;
 }
 
-.carousel__wrapper {
-  width: 10000px;
+.slick-slide {
+  padding: 0 4px;
+}
+
+
+/* Hot Collections Skeleton CSS */
+
+.nft_coll_skeleton {
+  background-color: lightgray;
 }
