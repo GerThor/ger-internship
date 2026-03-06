@@ -8,7 +8,7 @@ const HotCollections = () => {
   const [dataHotCollections, setDataHotCollections] = useState([]);
   const [loadingHotCollection, setLoadingHotCollection] = useState(true);
 
-  async function getHotCollectionsAPI() {
+  async function fetchHotCollectionsAPI() {
     const { data } = await axios.get(
       "https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections",
     );
@@ -17,7 +17,7 @@ const HotCollections = () => {
   }
 
   useEffect(() => {
-    getHotCollectionsAPI();
+    fetchHotCollectionsAPI();
   }, []);
 
   return (
@@ -66,7 +66,7 @@ const HotCollections = () => {
                       </Link>
                     </div>
                     <div className="nft_coll_pp">
-                      <Link to="/author">
+                      <Link to={`/author/${collection.authorId}`}>
                         <img
                           className="lazy pp-coll"
                           src={collection.authorImage}
