@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 
@@ -12,7 +11,6 @@ const TopSellers = () => {
 
   async function fetchDataTopSellers () {
     const {data} = await axios.get("https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers")
-    console.log(data)
     setDataTopSellers(data)
     setLoadingStateTopSellers(false)
   }
