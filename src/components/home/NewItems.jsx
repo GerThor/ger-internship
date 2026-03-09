@@ -20,9 +20,7 @@ const NewItems = () => {
   }
 
   useEffect(() => {
-    // setTimeout(() => {
-      fetchDataNewItems();
-    // }, 5000)
+    fetchDataNewItems();
   }, []) 
 
 

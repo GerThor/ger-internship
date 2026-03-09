@@ -13,6 +13,7 @@ const ExploreItems = () => {
   const incrementNftItems = 4;
 
   async function fetchExploreItems () {
+    setLoadingExploreItems(true)
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=${selectedValue}`)
     setDataExploreItems(data) 
     setLoadingExploreItems(false)

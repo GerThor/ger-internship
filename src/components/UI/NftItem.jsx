@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 import NftCountDown from "../UI/NftCountDown";
 
 
-const NftItem = ( { nftItem }) => {
+const NftItem = ( { nftItem, authorData }) => {
+  console.log("nftItem: ", nftItem)
   return (
     <div className="nft__item">
       <div className="author_list_pp">
         <Link
-          to={`/author/${nftItem.authorId}`}
+          to={`/author/${nftItem.authorId || authorData.authorId }`}
           data-bs-toggle="tooltip"
           data-bs-placement="top"
-          // title="Creator: Monica Lucas"  // was lingering in the home page NewItems for some reason // keeping just in case
         >
-          <img className="lazy" src={nftItem.authorImage} alt="" />
+          <img className="lazy" src={nftItem.authorImage || authorData.authorImage} alt="" />
           <i className="fa fa-check"></i>
         </Link>
       </div>
