@@ -2,12 +2,8 @@ import React, { useState, useEffect } from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
 import { Link, useParams } from "react-router-dom";
-import AuthorImage from "../images/author_thumbnail.jpg";
 import axios from "axios"
 import Skeleton from "../components/UI/Skeleton.jsx"
-
-//https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${}
-//https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=83937449
 
 const Author = () => {
   const { authorId } = useParams()
@@ -15,6 +11,7 @@ const Author = () => {
   const [authorNftCollectionData, setAuthorNftCollectionData] = useState([])
   const [authorLoading, setAuthorLoading] = useState(true)
   const [followState, setFollowState] = useState("Follow")
+
 
   async function fetchAuthorItems () {
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`)
