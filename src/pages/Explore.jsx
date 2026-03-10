@@ -3,6 +3,7 @@ import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
 
 const Explore = () => {
+  //FROM MAIN DO NOT REMOVE
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
