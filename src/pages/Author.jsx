@@ -15,8 +15,6 @@ const Author = () => {
 
   async function fetchAuthorItems () {
     const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`)
-    console.log("data", data)
-    console.log("AuthorNFTCollection", data.nftCollection)
     setAuthorData(data)
     setAuthorNftCollectionData(data.nftCollection)
     setAuthorLoading(false)

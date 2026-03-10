@@ -4,7 +4,6 @@ import NftCountDown from "../UI/NftCountDown";
 
 
 const NftItem = ( { nftItem, authorData }) => {
-  console.log("nftItem: ", nftItem)
   return (
     <div className="nft__item">
       <div className="author_list_pp">
