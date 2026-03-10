@@ -1,12 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import NftItem from "../UI/NftItem.jsx"
 import NftItemSkeleton from "../UI/NftItemSkeleton.jsx"
 
 const AuthorItems = ({ authorData, authorNftCollectionData, authorLoading }) => {
-  console.log("authorloading: ", authorLoading)
   return (
     <div className="de_tab_content">
       <div className="tab-1">
