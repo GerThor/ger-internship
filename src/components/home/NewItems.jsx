@@ -30,27 +30,33 @@ const NewItems = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
-              <h2>New Items</h2>
+              <div data-aos="fade-in">
+                <h2>New Items</h2>
+              </div>
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
           {loadingStateNewItems 
           ?
-          <ReactSlickSlider>
-          {new Array(4).fill(0).map((_, index) => (
-            <div key={index}>
-              <NftItemSkeleton />
-            </div>
-          ))}
-          </ReactSlickSlider>
+          <div data-aos="fade-in" data-aos-delay="400">
+            <ReactSlickSlider>
+            {new Array(4).fill(0).map((_, index) => (
+              <div key={index}>
+                <NftItemSkeleton />
+              </div>
+            ))}
+            </ReactSlickSlider>
+          </div>
           :
-          <ReactSlickSlider>
-          {dataNewItems.map((item) => (
-            <div key={item.id}>
-              <NftItem nftItem={item}/>
+          <div data-aos="fade-in" data-aos-delay="400">
+            <ReactSlickSlider>
+            {dataNewItems.map((item) => (
+              <div key={item.id}>
+                <NftItem nftItem={item}/>
+              </div>
+            ))}
+            </ReactSlickSlider>
             </div>
-          ))}
-          </ReactSlickSlider>
           }
         </div>
       </div>
