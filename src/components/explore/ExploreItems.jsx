@@ -26,7 +26,7 @@ const ExploreItems = () => {
 
   return (
     <>
-      <div>
+      <div data-aos="fade-in">
         <select id="filter-items" defaultValue="" onChange={(event) => setSelectedValue(event.target.value)}>
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
@@ -39,13 +39,17 @@ const ExploreItems = () => {
       ?
       new Array(8).fill(0).map((_, index) => (
         <div key={index} className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12" style={{ display: "block", backgroundSize: "cover" }}>
-          <NftItemSkeleton />
+          <div data-aos="fade-in">
+            <NftItemSkeleton />
+          </div>
         </div>
       ))
       :
       dataExploreItems.slice(0, index).map((exploreItem) => (
         <div key={exploreItem.id} className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12" style={{ display: "block", backgroundSize: "cover" }}>
-          <NftItem nftItem={exploreItem}/>
+          <div data-aos="fade-in">
+            <NftItem nftItem={exploreItem}/>
+          </div>
         </div>
       ))}
       
@@ -54,9 +58,11 @@ const ExploreItems = () => {
         ?
         null
         :
-        <Link to="" id="loadmore" className="btn-main lead" onClick={() => setIndex(index + incrementNftItems)}>
-          Load more
-        </Link>
+        <div data-aos="fade-up">
+          <Link to="" id="loadmore" className="btn-main lead" onClick={() => setIndex(index + incrementNftItems)}>
+            Load more
+          </Link>
+        </div>
         }
       </div>
     </>
