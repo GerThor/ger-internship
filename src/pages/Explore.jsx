@@ -3,11 +3,6 @@ import SubHeader from "../images/subheader.jpg";
 import ExploreItems from "../components/explore/ExploreItems";
 
 const Explore = () => {
-<<<<<<< HEAD
-  // Any Comment
-=======
-  //FROM MAIN DO NOT REMOVE
->>>>>>> main
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
